@@ -8,14 +8,14 @@
   },
   "scripts": {
     "test": "jest --watchAll=false --runInBand --verbose --forceExit",
-    "start": "nodemon index.js"
+    "start": "node server"
   },
   "jest": {
     "testEnvironment": "node",
     "globals": {
       "__DEV__": true
     },
-    "testRegex": "./tests/.*.test.js$",
+    "testRegex": ".*.test.js$",
     "rootDir": "."
   },
   "repository": {
@@ -38,6 +38,7 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongodb": "^4.1.2"
+    "mongodb": "^4.1.2",
+    "pm2": "^5.1.2"
   }
 }

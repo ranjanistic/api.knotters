@@ -8,4 +8,6 @@ module.exports = {
     DB_LINK: process.env.DB_LINK,
     HOST: process.env.HOST,
     PORT: Number(process.env.PORT),
+    CERT_FILE: process.env.CERT_FILE,
+    CERT_KEY: process.env.CERT_KEY,
 };

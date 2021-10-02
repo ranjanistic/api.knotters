@@ -1,13 +1,10 @@
 module.exports = {
     apps: [
         {
-            name: appname,
+            name: "api.knotters.org",
             script: "./server.js",
             instances: "max",
             env: {
-                NODE_ENV: "development",
-            },
-            env_production: {
                 NODE_ENV: "production",
             },
         },

@@ -3,3 +3,5 @@
 !.env.example
 .history/
 node_modules/
+*.pem
+*.gpg

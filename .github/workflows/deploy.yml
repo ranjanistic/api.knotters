@@ -13,7 +13,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -32,9 +32,12 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
 
     steps:
+    - run: ls -la
     - name: Merge changes
       run: |
-        sudo git pull
+        git pull
+    - run: npm install
+

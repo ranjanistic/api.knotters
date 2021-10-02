@@ -4,6 +4,7 @@ const { attach } = require("./db");
 const https = require("https");
 const http = require("http");
 const fs = require("fs");
+
 attach((err, db) => {
     if (err) throw Error(err);
     try {

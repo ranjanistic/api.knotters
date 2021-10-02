@@ -1,9 +1,9 @@
-const server = require("express")();
-const { HOST, PORT, CERT_KEY, CERT_FILE } = require("./config");
-const { attach } = require("./db");
-const https = require("https");
-const http = require("http");
-const fs = require("fs");
+const server = require("express")(),
+    { HOST, PORT, CERT_KEY, CERT_FILE } = require("./config"),
+    { attach } = require("./db"),
+    https = require("https"),
+    http = require("http"),
+    fs = require("fs");
 
 attach((err, db) => {
     if (err) throw Error(err);

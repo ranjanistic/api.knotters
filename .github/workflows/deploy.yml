@@ -35,7 +35,6 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - run: ls -la
     - name: Merge changes
       run: |
         git pull

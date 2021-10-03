@@ -1,7 +1,5 @@
 const people = require("express").Router();
-const {
-    people: { profile, user },
-} = require("./collections");
+const { profile, user } = require("./collections");
 
 people.get("/", async (req, res) => {
     const db = req["db"];

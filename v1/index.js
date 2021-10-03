@@ -4,7 +4,14 @@ v1.use("/people", require("./people"));
 v1.use("/projects", require("./projects"));
 v1.use("/compete", require("./compete"));
 v1.get("/", (req, res) => {
-    res.send({ version: "v1" });
+    res.json({ 
+        version: "v1",
+        GET: [
+            "/people",
+            "/projects",
+            "/compete",
+        ]
+    });
 });
 
 module.exports = v1;

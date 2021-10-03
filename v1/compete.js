@@ -1,7 +1,5 @@
 const compete = require("express").Router();
-const {
-    compete: { competition, result },
-} = require("./collections");
+const { competition, result } = require("./collections");
 
 compete.get("/", async (req, res) => {
     const db = req["db"];

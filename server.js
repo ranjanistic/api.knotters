@@ -23,6 +23,11 @@ attach((err, db) => {
                 revisions: ["/v1"],
             });
         });
+        server.use((req, res) => {
+            res.status(404).json({
+                comments: ["Not found"],
+            });
+        });
     };
 
     try {

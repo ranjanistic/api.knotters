@@ -11,21 +11,29 @@ attach((err, db) => {
         console.log("DB: ", db.namespace);
         server.use(
             "/v1",
-            (req, res, next) => {
+            (req, _, next) => {
                 req["db"] = db;
                 next();
             },
             require("./v1")
         );
-        server.get("/", (req, res) => {
+        server.get("/", (_, res) => {
             res.json({
                 name: "Knotters API",
                 revisions: ["/v1"],
+                comments: [
+                    "This is the Knotters API. It is currently in development.",
+                    "Restricted to limited purposes only, evolving overtime.",
+                    "All responses contain list of further paths (GET, POST) and comments.",
+                ]
             });
         });
-        server.use((req, res) => {
+        server.get('/robots.txt', (_, res) => {
+            res.sendFile(__dirname + '/robots.txt');
+        })
+        server.use((_, res) => {
             res.status(404).json({
-                comments: ["Not found"],
+                comments: ["Not found", "Check the path and try again.", "For example, try using /v1 GET path."],
             });
         });
     };

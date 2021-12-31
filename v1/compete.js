@@ -12,13 +12,13 @@ compete.get("/", async (req, res) => {
 compete.get("/all", async (req, res) => {
     const db = req["db"];
     delete req["db"];
-    const competitions = await db
+    const _competitions = await db
         .collection(competition)
         .find(
-            {},
+            { hidden: false },
             {
                 projection: {
-                    id: 0,
+                    // id: 0,
                     banner: 0,
                     perks: 0,
                     creator_id: 0,
@@ -28,6 +28,15 @@ compete.get("/all", async (req, res) => {
             }
         )
         .toArray();
+    const competitions = _competitions.map((comp)=>{
+        if (new Date(comp.startAt).getTime() <= new Date().getTime()){
+            return comp
+        }
+        delete comp.taskSummary
+        delete comp.taskDetail
+        delete comp.taskSample
+        return comp
+    })
     return res.json({ competitions });
 });
 

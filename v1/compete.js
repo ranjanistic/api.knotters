@@ -18,7 +18,7 @@ compete.get("/all", async (req, res) => {
             { hidden: false },
             {
                 projection: {
-                    // id: 0,
+                    _id: 0,
                     banner: 0,
                     perks: 0,
                     creator_id: 0,
@@ -29,6 +29,7 @@ compete.get("/all", async (req, res) => {
         )
         .toArray();
     const competitions = _competitions.map((comp)=>{
+        comp.id = new Buffer.from(comp.id, 'base64').toString('hex');
         if (new Date(comp.startAt).getTime() <= new Date().getTime()){
             return comp
         }

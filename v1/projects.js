@@ -7,6 +7,7 @@ const {
     tag,
     reportedproject,
 } = require("./collections");
+const { binaryToHex } = require("../utils/uuid");
 
 projects.get(ROOT, async (req, res) => {
     const db = req["db"];
@@ -53,8 +54,11 @@ projects.get("/categories/all", async (req, res) => {
     delete req["db"];
     const categories = db.collection(category);
     const available_categories = (
-        await categories.find({}, { projection: { name: 1, _id: 0 } }).toArray()
-    ).map((cat) => cat.name);
+        await categories.find({}, { projection: { name: 1, _id: 0, id:1 } }).toArray()
+    ).map((cat) => ({
+        id: binaryToHex(cat.id),
+        name:cat.name
+    }));
     res.json({
         available_categories,
     });

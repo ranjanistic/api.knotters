@@ -1,6 +1,6 @@
 const compete = require("express").Router();
 const { competition, result } = require("./collections");
-
+const { binaryToHex } = require("../utils/uuid");
 compete.get("/", async (req, res) => {
     const db = req["db"];
     delete req["db"];
@@ -28,16 +28,17 @@ compete.get("/all", async (req, res) => {
             }
         )
         .toArray();
-    const competitions = _competitions.map((comp)=>{
-        comp.id = new Buffer.from(comp.id, 'base64').toString('hex');
-        if (new Date(comp.startAt).getTime() <= new Date().getTime()){
-            return comp
+
+    const competitions = _competitions.map((comp) => {
+        comp.id = binaryToHex(comp.id);
+        if (new Date(comp.startAt).getTime() <= new Date().getTime()) {
+            return comp;
         }
-        delete comp.taskSummary
-        delete comp.taskDetail
-        delete comp.taskSample
-        return comp
-    })
+        delete comp.taskSummary;
+        delete comp.taskDetail;
+        delete comp.taskSample;
+        return comp;
+    });
     return res.json({ competitions });
 });
 

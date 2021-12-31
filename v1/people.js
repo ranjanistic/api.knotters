@@ -8,6 +8,7 @@ const {
     blockeduser,
     reporteduser,
 } = require("./collections");
+const { binaryToHex } = require("../utils/uuid");
 
 people.get("/", async (req, res) => {
     const db = req["db"];
@@ -68,8 +69,13 @@ people.get("/topics/all", async (req, res) => {
     delete req["db"];
     const topics = db.collection(topic);
     const available_topics = (
-        await topics.find({}, { projection: { _id: 0, name: 1 } }).toArray()
-    ).map((top) => top.name);
+        await topics
+            .find({}, { projection: { _id: 0, id: 1, name: 1 } })
+            .toArray()
+    ).map((top) => ({
+        id: binaryToHex(top.id),
+        name: top.name,
+    }));
     return res.json({
         available_topics,
     });

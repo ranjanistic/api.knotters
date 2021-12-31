@@ -1,4 +1,6 @@
-const binaryToHex = (binstr) => new Buffer.from(String(binstr), "binary").toString("hex");
+const binaryToHex = (binstr) => {
+    return binstr.toString('hex');
+}
 
 module.exports = {
     binaryToHex

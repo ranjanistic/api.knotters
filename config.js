@@ -10,4 +10,5 @@ module.exports = {
     PORT: Number(process.env.PORT),
     CERT_FILE: process.env.CERT_FILE,
     CERT_KEY: process.env.CERT_KEY,
+    INTERNAL_SECRET: process.env.INTERNAL_SECRET,
 };

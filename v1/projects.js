@@ -1,4 +1,5 @@
 const projects = require("express").Router();
+const { ROOT } = require("../utils/paths");
 const {
     freeproject,
     verifiedproject,
@@ -7,7 +8,7 @@ const {
     reportedproject,
 } = require("./collections");
 
-projects.get("/", async (req, res) => {
+projects.get(ROOT, async (req, res) => {
     const db = req["db"];
     delete req["db"];
     const total_free = await db.collection(freeproject).count();

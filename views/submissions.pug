@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Knotters Internal API (Competitions)
+    body
+        br
+        div(align='center')
+            strong(style="color:red",id="err")=error
+            br
+            br
+            strong Competition Participants Data
+            br
+            br
+            form(action=submitOn, method="post") 
+                input(type="password",value="" name="_INTERNAL_KEY", placeholder="Your API Key", required=true)
+                br
+                br
+                span Competition 
+                select(name="competition", required=true)
+                    option(value="") Select One
+                    each comp in competitions 
+                        option(value=comp.id)=comp.title
+                br
+                br
+                span From (optional) 
+                input(type="datetime-local", name="from_date", required=false)
+                br
+                span To (optional) 
+                input(type="datetime-local", name="to_date", required=false)
+                br
+                br
+                input(type="submit", value="Download Particpants")
+                br
+                br
+                a(href=submitOn)
+                    button(type="button") Refresh
+

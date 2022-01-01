@@ -7,7 +7,7 @@ const {
     profiletopic,
     blockeduser,
     reporteduser,
-} = require("./collections");
+} = require("./../utils/collections");
 const { binaryToHex } = require("../utils/uuid");
 
 people.get("/", async (req, res) => {

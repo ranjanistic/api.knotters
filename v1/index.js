@@ -1,8 +1,6 @@
 const v1 = require("express").Router();
 const { V1, ROOT } = require("../utils/paths");
 const { VERSION_1 } = require("../utils/strings");
-const { internalOnly } = require("../middleware/internal");
-const collections = require("./collections");
 
 v1.use(V1.PEOPLE, require(`.${V1.PEOPLE}`));
 v1.use(V1.PROJECTS, require(`.${V1.PROJECTS}`));
@@ -13,11 +11,11 @@ v1.get(ROOT, (_, res) => {
         GET: [V1.PEOPLE, V1.PROJECTS, V1.COMPETE],
     });
 });
-v1.post("/collections", internalOnly, (_, res) => {
-    return res.json({
-        version: VERSION_1,
-        collections,
-    });
-});
+// v1.post("/collections", internalOnly, (_, res) => {
+//     return res.json({
+//         version: VERSION_1,
+//         collections,
+//     });
+// });
 
 module.exports = v1;

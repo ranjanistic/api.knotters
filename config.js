@@ -11,4 +11,5 @@ module.exports = {
     CERT_FILE: process.env.CERT_FILE,
     CERT_KEY: process.env.CERT_KEY,
     INTERNAL_SECRET: process.env.INTERNAL_SECRET,
+    INTERNAL_KEY: process.env.INTERNAL_KEY
 };

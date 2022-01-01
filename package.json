@@ -9,6 +9,7 @@
   "scripts": {
     "test": "jest --watchAll=false --runInBand --verbose --forceExit",
     "start": "node server",
+    "dev": "nodemon server",
     "cluster": "pm2 start --watch"
   },
   "jest": {
@@ -39,8 +40,13 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "joi": "^17.5.0",
+    "json2xls": "^0.1.2",
     "mongodb": "^4.1.2",
     "pm2": "^5.1.2",
-    "rate-limiter-flexible": "^2.3.6"
+    "pug": "^3.0.2",
+    "rate-limiter-flexible": "^2.3.6",
+    "uuid": "^8.3.2"
   }
 }

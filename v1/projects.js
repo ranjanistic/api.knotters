@@ -6,7 +6,7 @@ const {
     category,
     tag,
     reportedproject,
-} = require("./collections");
+} = require("../utils/collections");
 const { binaryToHex } = require("../utils/uuid");
 
 projects.get(ROOT, async (req, res) => {

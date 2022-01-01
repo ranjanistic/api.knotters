@@ -1,5 +1,5 @@
 const compete = require("express").Router();
-const { competition, result } = require("./collections");
+const { competition, result } = require("../utils/collections");
 const { binaryToHex } = require("../utils/uuid");
 compete.get("/", async (req, res) => {
     const db = req["db"];

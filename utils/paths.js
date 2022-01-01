@@ -7,4 +7,8 @@ module.exports = {
         PROJECTS: "/projects",
         COMPETE: "/compete",
     },
+    INTERNAL:{
+        ROOT: "/internal/:pathkey",
+        COMPETE: "/compete",
+    },
 }

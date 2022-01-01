@@ -1,5 +1,6 @@
 const server = require("./app"),
-    { HOST, PORT, CERT_KEY, CERT_FILE } = require("./config"),
+    {V1, INTERNAL} = require("./utils/paths"),
+    { HOST, PORT, CERT_KEY, CERT_FILE, INTERNAL_KEY } = require("./config"),
     { attach } = require("./db"),
     https = require("https"),
     http = require("http"),
@@ -10,12 +11,25 @@ attach((err, db) => {
     const endpoints = () => {
         console.log("DB:", db.namespace);
         server.use(
-            "/v1",
+            V1.ROOT,
             (req, _, next) => {
                 req["db"] = db;
                 next();
             },
             require("./v1")
+        );
+        server.use(
+            INTERNAL.ROOT,
+            (req, res, next) => {
+                if(req.params.pathkey!=INTERNAL_KEY){
+                    return res.status(404).json({
+                        comments: ["Not found", "Check the path and try again.", "For example, try using /v1 GET path."],
+                    });
+                }
+                req["db"] = db;
+                next();
+            },
+            require("./internal")
         );
         server.use((_, res) => {
             res.status(404).json({

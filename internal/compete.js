@@ -1,7 +1,7 @@
 const compete = require("express").Router();
-var json2xls = require('json2xls');
+const json2xls = require('json2xls');
 
-const { internalOnly } = require("../middleware/internal");
+const { internalOnly } = require("../middleware/authorize");
 const {
     competition,
     comp_submission,

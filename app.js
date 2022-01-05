@@ -2,17 +2,15 @@ const server = require("express")();
 const express = require("express");
 const { ROOT, ROBOTS, V1 } = require("./utils/paths");
 const { APPNAME } = require("./utils/strings");
-const { rateLimit } = require("./middleware/ratelimit");
 const helmet = require("helmet");
 
 server.use(helmet());
-server.use(rateLimit);
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.set("view engine", "pug");
 server.set("trust proxy", 1);
 
-server.get(ROOT, rateLimit, (_, res) => {
+server.get(ROOT, (_, res) => {
     res.json({
         name: APPNAME,
         revisions: [V1.ROOT],

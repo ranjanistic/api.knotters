@@ -4,7 +4,7 @@
   "description": "Knotters API",
   "main": "server.js",
   "engines": {
-    "node": "^14"
+    "node": "^15"
   },
   "scripts": {
     "test": "jest --watchAll=false --runInBand --verbose --forceExit",
@@ -41,12 +41,14 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
+    "ioredis": "^4.28.2",
     "joi": "^17.5.0",
     "json2xls": "^0.1.2",
     "mongodb": "^4.1.2",
     "pm2": "^5.1.2",
     "pug": "^3.0.2",
     "rate-limiter-flexible": "^2.3.6",
+    "redis": "^4.0.1",
     "uuid": "^8.3.2"
   }
 }

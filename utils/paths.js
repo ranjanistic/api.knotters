@@ -10,5 +10,6 @@ module.exports = {
     INTERNAL:{
         ROOT: "/internal/:pathkey",
         COMPETE: "/compete",
+        COLLECTIONS: "/collections",
     },
 }

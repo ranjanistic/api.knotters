@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 module.exports = {
+    IS_PRODUCTION: process.env.NODE_ENV === "production",
     SUPERSERVER: process.env.SUPERSERVER,
     DB_USER: process.env.DB_USER,
     DB_SECRET: process.env.DB_SECRET,
@@ -11,5 +12,9 @@ module.exports = {
     CERT_FILE: process.env.CERT_FILE,
     CERT_KEY: process.env.CERT_KEY,
     INTERNAL_SECRET: process.env.INTERNAL_SECRET,
-    INTERNAL_KEY: process.env.INTERNAL_KEY
+    INTERNAL_KEY: process.env.INTERNAL_KEY,
+    REDIS_PASSWORD: process.env.REDIS_PASSWORD,
+    REDIS_URL: process.env.REDIS_URL,
+    REDIS_PORT: process.env.REDIS_PORT,
+    REDIS_PREFIX: process.env.REDIS_PREFIX,
 };

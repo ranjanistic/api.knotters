@@ -1,6 +1,6 @@
 const compete = require("express").Router();
-const { competition, result } = require("../utils/collections");
-const { binaryToHex } = require("../utils/uuid");
+const { competition, result, comp_event } = require("../utils/collections");
+const { binaryToHex, uuidToBinary } = require("../utils/uuid");
 compete.get("/", async (req, res) => {
     const db = req["db"];
     delete req["db"];
@@ -40,6 +40,52 @@ compete.get("/all", async (req, res) => {
         return comp;
     });
     return res.json({ competitions });
+});
+compete.get("/events", async (req, res) => {
+    const db = req["db"];
+    delete req["db"];
+    const _events = await db
+        .collection(comp_event)
+        .find(
+            { is_public: true },
+            {
+                projection: {
+                    _id: 0,
+                    banner: 0,
+                    creator_id: 0,
+                    modifiedOn: 0,
+                },
+            }
+        )
+        .toArray();
+
+    const events = _events.map((eve) => {
+        eve.id = binaryToHex(eve.id);
+        return eve;
+    });
+    return res.json({ events });
+});
+compete.get("/event/:eventID", async (req, res) => {
+    const db = req["db"];
+    delete req["db"];
+
+    const event = await db.collection(comp_event).findOne(
+        {
+            id: uuidToBinary(req.params.eventID),
+            is_public: true,
+        },
+        {
+            projection: {
+                _id: 0,
+                banner: 0,
+                creator_id: 0,
+                modifiedOn: 0,
+            },
+        }
+    );
+
+    event.id = binaryToHex(event.id);
+    return res.json({ event });
 });
 
 module.exports = compete;

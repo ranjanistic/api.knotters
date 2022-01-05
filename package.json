@@ -1,10 +1,10 @@
 {
-  "name": "knotters-api",
+  "name": "api.knotters.org",
   "version": "1.0.0",
   "description": "Knotters API",
   "main": "server.js",
   "engines": {
-    "node": "^15"
+    "node": "^16"
   },
   "scripts": {
     "test": "jest --watchAll=false --runInBand --verbose --forceExit",

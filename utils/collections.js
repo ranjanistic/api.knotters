@@ -16,6 +16,7 @@ module.exports = {
     reportedproject: "projects_reportedproject",
 
     competition: "compete_competition",
+    comp_event: "compete_event",
     comp_submission: "compete_submission",
     comp_submissionparticipant: "compete_submissionparticipant",
     result: "compete_result",

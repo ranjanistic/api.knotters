@@ -24,14 +24,22 @@ const replaceAll = (str, find, replace) => {
 
 const uuidToBinary = (uuidstr) => {
     try {
+        if (!uuidstr.includes("-"))
+            uuidstr =
+                uuidstr.substr(0, 8) +
+                "-" +
+                uuidstr.substr(8, 4) +
+                "-" +
+                uuidstr.substr(12, 4) +
+                "-" +
+                uuidstr.substr(16, 4) +
+                "-" +
+                uuidstr.substr(20);
         return b64ToBinary(
-            new Buffer.from(
-                uuid.parse(uuidstr),
-                "binary"
-            ).toString("base64")
+            new Buffer.from(uuid.parse(uuidstr), "binary").toString("base64")
         );
-    } catch(e) {
-        console.log(e)
+    } catch (e) {
+        console.log(e);
         return undefined;
     }
 };

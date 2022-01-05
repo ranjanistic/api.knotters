@@ -1,4 +1,4 @@
-# A rate limit is placed on the number of requests per second.
+# A rate limit is placed on the number of requests per second, except for autorized requests.
 
 User-agent: *
 Allow: /

@@ -39,7 +39,6 @@ const uuidToBinary = (uuidstr) => {
             new Buffer.from(uuid.parse(uuidstr), "binary").toString("base64")
         );
     } catch (e) {
-        console.log(e);
         return undefined;
     }
 };

@@ -68,12 +68,20 @@ compete.get("/events", async (req, res) => {
 compete.get("/event/:eventID", async (req, res) => {
     const db = req["db"];
     delete req["db"];
-
-    const event = await db.collection(comp_event).findOne(
-        {
-            id: uuidToBinary(req.params.eventID),
+    let eveID = uuidToBinary(req.params.eventID)
+    if(!eveID){
+        query = {
+            pseudonym: eveID,
             is_public: true,
-        },
+        }
+    } else {
+        query = {
+            id: eveID,
+            is_public: true,
+        }
+    }
+    const event = await db.collection(comp_event).findOne(
+        query,
         {
             projection: {
                 _id: 0,
@@ -83,8 +91,7 @@ compete.get("/event/:eventID", async (req, res) => {
             },
         }
     );
-
-    event.id = binaryToHex(event.id);
+    if(event) event.id = binaryToHex(event.id);
     return res.json({ event });
 });
 

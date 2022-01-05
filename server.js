@@ -62,5 +62,3 @@ attach((err, db) => {
         });
     }
 });
-
-module.exports = server;

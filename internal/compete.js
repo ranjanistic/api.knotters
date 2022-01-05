@@ -20,7 +20,7 @@ compete.get("/submissions", async (req, res) => {
     const competitions = await db
         .collection(competition)
         .find(
-            { hidden: false },
+            { },
             {
                 projection: {
                     id: 1,

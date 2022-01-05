@@ -6,6 +6,8 @@ on:
     paths:
       - "**.js"
       - "**.json"
+      - "**.pug"
+      - "**.txt"
 
 jobs:
   testing:
@@ -37,6 +39,6 @@ jobs:
     steps:
     - name: Merge changes
       run: |
-        git pull
+        git pull origin master
     - run: npm install
 

@@ -6,7 +6,7 @@ compete.get("/", async (req, res) => {
     delete req["db"];
     const competitions = await db.collection(competition).count();
     const results = await db.collection(result).count();
-    return res.json({ competitions, results, GET: ["/all"] });
+    return res.json({ competitions, results, GET: ["/all","/events", "/event/{eventID}"] });
 });
 
 compete.get("/all", async (req, res) => {

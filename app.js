@@ -13,7 +13,7 @@ server.set("trust proxy", 1);
 server.get(ROOT, (_, res) => {
     res.json({
         name: APPNAME,
-        revisions: [V1.ROOT],
+        GET: [V1.ROOT],
         comments: [
             "This is the Knotters API. It is currently in development.",
             "Restricted to limited purposes only, evolving overtime.",

@@ -11,11 +11,5 @@ v1.get(ROOT, (_, res) => {
         GET: [V1.PEOPLE, V1.PROJECTS, V1.COMPETE],
     });
 });
-// v1.post("/collections", internalOnly, (_, res) => {
-//     return res.json({
-//         version: VERSION_1,
-//         collections,
-//     });
-// });
 
 module.exports = v1;

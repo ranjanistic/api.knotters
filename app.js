@@ -6,11 +6,11 @@ const { APPNAME } = require("./utils/strings");
 const helmet = require("helmet");
 
 server.use(helmet());
-server.use(cors())
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.set("view engine", "pug");
 server.set("trust proxy", 1);
+server.use(cors());
 
 server.get(ROOT, (_, res) => {
     res.json({

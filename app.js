@@ -1,10 +1,12 @@
 const server = require("express")();
+const cors = require("cors");
 const express = require("express");
 const { ROOT, ROBOTS, V1 } = require("./utils/paths");
 const { APPNAME } = require("./utils/strings");
 const helmet = require("helmet");
 
 server.use(helmet());
+server.use(cors())
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.set("view engine", "pug");

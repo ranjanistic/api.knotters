@@ -9,6 +9,7 @@ This repository contains source code for Knotters API, available at link in desc
 - nodeJS v14.x (tested on 16.x)
 - Database connection string for API calls (MongoDB)
 - npm (available with nodejs)
+- Redis (6.x or above)
 
 ### Environment
 

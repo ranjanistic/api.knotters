@@ -143,8 +143,7 @@ compete.get("/:competeId", async (req, res) => {
         delete comp.taskSummary;
         delete comp.taskDetail;
         delete comp.taskSample;
-        comp.totalSubmissions = subms;
-        return comp;
+        return { ...comp,totalSubmissions:subms  };
     });
     return res.json({ ...competitions[0] });
 });

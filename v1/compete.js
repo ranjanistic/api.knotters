@@ -143,9 +143,9 @@ compete.get("/:competeId", async (req, res) => {
         delete comp.taskSummary;
         delete comp.taskDetail;
         delete comp.taskSample;
-        return { ...comp,totalSubmissions:subms  };
+        return { ...comp  };
     });
-    return res.json({ ...competitions[0] });
+    return res.json({ ...competitions[0], totalSubmissions:subms });
 });
 
 module.exports = compete;

@@ -2,7 +2,7 @@ const { REDIS_PASSWORD, REDIS_URL, REDIS_PREFIX } = require("../config");
 const redis = require("redis");
 
 const client = redis.createClient({
-    password:
+    // password:
     url: REDIS_URL,
     database: 2,
 });

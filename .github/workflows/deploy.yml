@@ -30,7 +30,7 @@ jobs:
 
   deploy:
     needs: [testing]
-    runs-on: [self-hosted, api, nodejs]
+    runs-on: [self-hosted, api, nodejs, knotters]
     strategy:
       max-parallel: 1
       matrix:
@@ -40,5 +40,7 @@ jobs:
     - name: Merge changes
       run: |
         git pull origin master
-    - run: npm install
+    - run: npm install 
+    - run: echo "${{ secrets.ENV_PROD }}" > .env 
+    - run: pm2 reload ecosystem.config.js --update-env
 

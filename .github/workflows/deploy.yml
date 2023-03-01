@@ -2,7 +2,7 @@ name: API Deploy
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - "**.js"
       - "**.json"
@@ -35,13 +35,15 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
-    - name: Merge changes
-      run: |
-        git pull origin master
-    - run: npm install 
+    - uses: actions/checkout@v2
+      with:
+        clean: false
+
+
+    - run: npm install
     - run: echo "${{ secrets.ENV_PROD }}" > .env 
     - run: pm2 reload ecosystem.config.js --update-env
 

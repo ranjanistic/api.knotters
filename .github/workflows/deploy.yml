@@ -42,7 +42,7 @@ jobs:
       with:
         clean: false
 
-
+    - run: export $PATH=$PATH:/home/ubuntu/.nvm/versions/node/v18.14.2/bin
     - run: npm install
     - run: echo "${{ secrets.ENV_PROD }}" > .env 
     - run: pm2 reload ecosystem.config.js --update-env
